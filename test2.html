@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mangalore Tourism Recommendation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(45deg, #3498db, #e74c3c, #1abc9c, #f39c12);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            color: #fff;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 200%;
+            background: linear-gradient(to right,rgb(31, 31, 171),rgb(156, 29, 178),rgb(15, 149, 164));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: gradient 3s linear infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0% 75%;
+            }
+            50% {
+                background-position: 100% 30%;
+            }
+            100% {
+                background-position: 0% 70%;
+            }
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 5px 0;
+            font-weight: bold;
+            color: #333;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #333;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        .suggestion {
+            display: inline-block;
+            margin: 10px;
+            padding: 5px 10px;
+            background-color: #2ecc71;
+            color: #fff;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .suggestion:hover {
+            background-color: #27ae60;
+        }
+        p{
+            display: block;
+            margin: 15px 0 5px 0;
+            font-weight: bold;
+            color: #333;
+
+        }
+    </style>
+</head>
+<body>
+
+
+<div class="container">
+    <h1>Mangalore Tourism Recommendation</h1>
+    
+    <form id="recommendationForm">
+        <label for="preferences">Choose your preference:</label>
+        <select id="preferences" size="1">
+            <option value="beach.html">Beach</option>
+            <option value="temple.html">Temple</option>
+            <option value="market.html">Market</option>
+            <option value="historical.html">Historical Sites</option>
+            <option value="restaurant.html">Restaurant</option>
+            <option value="park.html">Park</option>
+            <option value="shopping.html">Shopping</option>
+            <option value="entertainment.html">Entertainment</option>
+            <option value="museum.html">Museum</option>
+            <option value="adventure.html">Adventure</option>
+        </select>
+        
+        <button type="button" onclick="generateRecommendation()">Get Recommendation</button>
+        
+        <div>
+            <p>Or choose from suggestions:</p>
+            <span class="suggestion" onclick="addSuggestion('Nature')">Nature</span>
+            <span class="suggestion" onclick="addSuggestion('Cultural Events')">Cultural Events</span>
+            <span class="suggestion" onclick="addSuggestion('Cafes')">Cafes</span>
+            <span class="suggestion" onclick="addSuggestion('Nightlife')">Nightlife</span>
+            
+        </div>
+        <div class="copywrite">
+            <p>Copywrite &#169; kptmnglr. Website <i class="fa-solid fa-globe"></i> Is Made By Dakshath,Arnold,Manvith,Nikshitha,Shreya</p>
+        </div>
+    </form>
+</div>
+<script>
+    function generateRecommendation(){
+        var selectedoption=
+        document.getElementById("preferences").value
+
+        if(selectedoption){
+            window.location.href=selectedoption;
+        }
+    }
+    function addSuggestion(suggestion) {
+    var preferences = document.getElementById("preferences");
+    var suggestionIndex = Array.from(preferences.options).findIndex(option => option.value.toLowerCase() === suggestion.toLowerCase());
+
+    if (suggestionIndex === -1) {
+        var newOption = document.createElement("option");
+        newOption.value = suggestion.toLowerCase();
+        newOption.text = suggestion;
+        preferences.add(newOption);
+    } else {
+        alert("You've already selected " + suggestion + " as a preference.");
+    }
+}
+</script>
+</body>
+</html>

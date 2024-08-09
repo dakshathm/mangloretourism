@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Famous Temples of Mangalore</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <style>
+        /* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+/* Header */
+header {
+    background: linear-gradient(135deg, #20aff1 0%, #2575fc 100%);
+    color: #fff;
+    padding: 1.5rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+nav li {
+    margin: 0 1.5rem;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem 1rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+section {
+    margin-bottom: 3rem;
+}
+
+h1, h2, h3, h4 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+/* Temple Sections */
+.temple {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    margin-bottom: 2rem;
+    transition: transform 0.3s;
+}
+
+.temple:hover {
+    transform: translateY(-10px);
+}
+
+.temple img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+}
+
+.location a {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+.location a:hover {
+    text-decoration: underline;
+}
+
+.gallery {
+    margin: 1rem 0;
+}
+
+.gallery-grid {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.gallery-item {
+    flex: 1 1 calc(33.333% - 1rem);
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.3s, opacity 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    opacity: 0.8;
+}
+
+.read-more-btn, .read-less-btn {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 2.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 1rem;
+    display: block;
+    text-align: center;
+}
+
+.read-more-btn:hover, .read-less-btn:hover {
+    background: #2980b9;
+}
+
+.more-info {
+    display: none;
+    padding: 1rem;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-top: 1rem;
+    transition: max-height 0.3s, padding 0.3s;
+    overflow: hidden;
+    max-height: 0;
+}
+
+.temple.expanded .more-info {
+    display: block;
+    max-height: 3000px;
+    padding: 1rem;
+}
+
+.more-info h4 {
+    margin-top: 1rem;
+}
+
+/* Footer */
+footer {
+    background: #333;
+    color: #fff;
+    padding: 2rem 0;
+    border-top: 1px solid #ddd;
+}
+
+.footer-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-info, .contact-form {
+    flex: 1;
+    margin: 1rem;
+}
+
+.contact-info h3, .contact-form h3 {
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+}
+
+.social-media a {
+    color: #fff;
+    margin-right: 0.5rem;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+.social-media a:hover {
+    color: #f8c291;
+}
+
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.contact-form button {
+    background: #3498db;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.contact-form button:hover {
+    background: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .contact-info, .contact-form {
+        margin: 0;
+        margin-bottom: 2rem;
+    }
+
+    .gallery-grid {
+        flex-direction: column;
+    }
+
+    .gallery-item {
+        flex: 1 1 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    nav ul {
+        flex-direction: column;
+    }
+
+    nav li {
+        margin: 0.5rem 0;
+    }
+}
+
+    </style>
+    <header>
+        
+        <h1 style="display: flex; align-items: center; color: aliceblue;">Famous Temples of Mangalore</h1>
+        <nav>
+            <ul>
+        
+                <li><a href="#home">Home</a></li>
+                <li><a href="#temples">Temples</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home">
+            <p>Explore the rich cultural and spiritual heritage of Mangalore through its famous temples. Each temple has its own unique history, significance, and architectural beauty.</p>
+        </section>
+
+        <section id="temples">
+            <section id="gokarnath" class="temple">
+                <h2>Shree Gokarnanatha Kshetra</h2>
+                <img src="assets/temple/kudrolitemple\kudroli-gokarnanatha-temple.jpg" alt="Gokarnath Temple">
+                <p>The Gokarnanatheshwara Temple, otherwise known as Kudupu Sri Gokarnanatha Kshetra, is in the Kudupu area of Mangalore in Karnataka, India. It was consecrated by Narayana Guru. It is dedicated to Gokarnanatha, a form of Lord Shiva. This temple was built in 1912 by Adhyaksha HoigeBazar Koragappa.
+
+                    This temple is now accepted as "Aadi" by the Billava community.
+                    
+                    The temple is 2 km from the centre of Mangalore city. The temple has Gopuram (tower like structure) decorated with murals of various gods and goddesses. Murals depict scenes from Hindu epics and legends.</p>
+              
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets\temple\kudrolitemple\Hanuman-Temple-at-Kudroli-640x519.webp">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kudrolitemple\img.jpeg" alt="Gokarnath Temple Image 2">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kudrolitemple\m_Kudroli Gokarnanath Temple-5_l_423_564.avif" alt="Gokarnath Temple Image 3">
+                           
+                            
+
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>The Billavas are Aboriginals/ Natives of the Western Ghats and the Western Coast of Karnataka. The first known empire of the Billvas was the Chera empire somewhere around 200 BCE. <br><br>
+
+                        The Chera Kings of the Chera dynasty(200 BCE - 1100 CE) had the title of Villavar(Billava). It is known that several Villavar/ Billava clans came together to form an early Chera Empire along the Western coast and Western Ghats in South India. The early Cheras were around the region of Muziris. Muziris was identified as the region around Mangalore in Southwestern Karnataka.[1][2][3][4][5][6][7][8][9] The Chera Kingdom had an emblem of the Bow and Arrow (Billu/ Villu and Bana) on their flags. The silver punch marked coins of the Chera empire with the symbol of bow(Billu) have been discovered relating to the term Billavas. They then started moving towards and conquering parts of now Tamil Nadu, hence we see the confluence of many Tamil words in Titles and common addresses.Later with the advent of other sects like Nagas (example being shettys who consider themselves naga Kshatriyas) and Jains in the region, influenced the Chera kingdoms cultural practises such as Naga worship and building of Jain monasteries. With the rise of other empires like the Pandyas and Cholas, the Chera empire slowly came to an end starting from 5th century CE. <br><br>
+                        
+                        There is brief mention of the Chera empire by Kautilya(Chanakya)(3-4 century BCE), Katyayana (3-4 century BCE), Patanjali (5 century BCE) among others. <br><br>
+                        
+                        The other most recent,famous and prosperous empire is the Tuluva Dynasty (1491 - 1570 AD) of the Vijayanagar empire. Krishnadevaraya of the Vijayanagar empire was Tulu speaking and Tulu is spoken only along coastal karnataka namely Mangalore (Dakshina Karnataka) and Udupi.Since billavas were the aboriginals/ natives speaking Tulu this dynasty and its warlords were definitely a part of them. <br><br>
+                        
+                        The Billava community [10][11] wanted to carve a niche for themselves in the realm of spirituality. They wanted to be able to personalise the spiritual offering to their deity Lord Shiva with norms in accordance to the billava tradition. It is in such a scenario that Adhyaksha Koragappa a billava leader and businessman took the initiative and sought a Guru for this spiritual quest. <br><br>
+
+                        Adhyaksha Koragappa led a delegation of Billava elders and visited Shri Narayana Guru in 1908. He invited Shri Narayana Guru to guide the billavas to build a temple. <br>
+                        <br>
+                        
+                        Adhyaksha Koragappa, the Founder of the Gokarnanatheshwara Temple, Kudupu. A great devotee of Shri Narayana Guru and Bhagawan Nityananda of Ganeshpuri <br><br>
+                        The community found a messiah in Narayana Guru to guide them in this spiritual quest. Narayana Guru with his knowledge and experience in spirituality became the ideal guide and guru (from the south of India closest to Mangalore) for the billavas to help them build a temple of their deity, Lord Shiva. <br><br>
+                        
+                        Adhyaksha Koragappa was a very well known businessman in Mangalore who had a large tile factory. He also conducted extensive trade in the 1900s with business enterprises in Middle East, Africa, Singapore, Malaysia, Sri Lanka and Myanmar, trading mainly in Mangalore tiles, copra, spices and other natural products. <br><br>
+                        
+                        On the arrival of Shri Narayana Guru in Mangalore, Adhyaksha Koragappa gave him a horse-driven carriage to select a suitable place for a temple. Narayana Guru between places Mulihithilu (where a lot of linga Roopa Aradhana used to happen especially from saints of NATH tradition) and Kudupu, selected Kudupu. <br><br>
+                        
+                        Koragappa family still maintains the CHAIR on which Shri Narayana Guru sat in Adhyaksha Koragappa's house and addressed Adhyaksha Koragappa and others regarding various issues including the creation of a temple. <br><br>
+                        
+                        Adhyaksha Koragappa then gave the necessary land and funds to build this temple in 1912 seeking blessings and spiritual guidance of Shri Narayana Guru. The Shiva linga was brought by Shri Narayana Guru himself.</p>
+                    <h4>Festivals & Events</h4>
+                    <p>Shree Gokarnanatha Kshetra, also known as Gokarnath Temple, celebrates several significant festivals throughout the year, which draw large numbers of devotees:
+
+                        1.Maha Shivaratri: A major festival dedicated to Lord Shiva, Maha Shivaratri is celebrated with special poojas, offerings, and night-long vigils. Devotees fast and participate in various rituals to honor Shiva. <br>
+                        
+                        2.Ganesh Chaturthi: This festival marks the birth of Lord Ganesha. Devotees perform special prayers and processions, and elaborate decorations and idols of Ganesha are a key feature of the celebration. <br>
+                        
+                        3.Navaratri: A nine-night festival dedicated to the goddess Durga, Navaratri involves various rituals, including fasting, prayers, and dance performances. The last day, Vijaya Dashami, is celebrated with grandeur. <br>
+                        
+                        4.Deepavali: Known as the Festival of Lights, Deepavali is celebrated with the lighting of lamps, fireworks, and festive decorations. It symbolizes the victory of light over darkness and good over evil. <br>
+                        
+                        5.Rathotsava: This annual chariot festival involves a grand procession with the temple's main deity taken out in a beautifully decorated chariot. It is a vibrant and significant event attracting many devotees. <br>
+                        
+                        6.Mahashivaratri and Shivaratri: Apart from Maha Shivaratri, regular Shivaratri observances occur every month, with devotees participating in special rituals and prayers.</p>
+                    <h4>Location</h4>
+                    <p>Shree Gokarnanatha Kshetra is situated on Kudupu Road in Mangalore, Karnataka, India. It is centrally located, making it easily accessible from various parts of the city.</p>
+                    <div class="location">
+                        <a href="https://www.google.com/maps/place/Kudupu+Sri+Gokarnanatheshwara+Kshetra/@12.8761288,74.8294915,17z/data=!3m1!4b1!4m6!3m5!1s0x3ba35bc3cc026e85:0x14d6faf193086cb6!8m2!3d12.8761288!4d74.8320664!16zL20vMGNyN3No?entry=ttue" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                        </a>
+                    </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <!-- Mangaladevi Temple Section -->
+            <section id="mangaladevi" class="temple">
+                <h2>Mahathobara Shri Mangaladevi Temple</h2>
+                <img src="assets/temple/mangaldevi temple\mangaladevii.jpeg" alt="Mangaladevi Temple">
+                <p>The Mangaladevi Temple, located in the heart of Mangalore, Karnataka, is a revered Hindu temple dedicated to Goddess Mangaladevi. Believed to have been established in the 9th century by the Alupa dynasty, the temple is named after the goddess who is worshipped for her auspicious and protective qualities. Its traditional Dravidian architecture features intricate carvings and a beautifully adorned sanctum. Major festivals celebrated here include Navaratri, Vijayadashami, and the annual Mangaladevi festival, drawing numerous devotees and visitors. The temple holds significant cultural and religious importance in Mangalore.</p>
+               
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/mangaldevi temple\magaladevi2.jpeg" alt="Mangaladevi Temple Image 1">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/mangaldevi temple\mangaldevi1.jpeg" alt="Mangaladevi Temple Image 2">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/mangaldevi temple\mangaldevi3.jpeg" alt="Mangaladevi Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>In Tulunadu, in the 10th century, Kundavarma, the most famous king of Alupa dynasty was ruling. Mangalore was the capital of his kingdom. At that time, there came two sages named Machhendranatha and Gorakanatha from Nepal. They reached Mangalapura, crossing the river Nethravathi. The place were they crossed the river came to be known as ‘Gorakdandu’. They chose a place near the bank of Nethravathi which was once the centre of activities of sage Kapila. He had his hermitage there and it was a great centre of education.’
+
+                        Hearing about the arrival of the two saints the king came to meet them. Introducing himself as the king of Tulunadu he paid them his respects and offered all help and patronage. Pleased with the humility and virtues of the king they brought to his knowledge that his kingdom was a holy place and it was sanctified by the activities of holy saints and sages in the past. They requested him to grant them land so that they could build their hermitage and make it a centre of their religious activities under his protection and patronage.
+                        For Kundavarma it was really a surprise to know that his land had such a hoary history. It was from these saints he came to know that once upon a time, in his land there existed a temple dedicated to mother Mangaladevi. He heard from them the story of Vikhasini, Andasura, Parashurama and the temple of Mangaladevi built by Parashurama. The two saints took the king to the places where all these historical events had taken place. They asked the king to dig the place and retrieve the Linga and the Dharapatra symbolising Mangaladevi and install them in a shrine along with Nagaraja for protection.
+
+                        Kundavarma carried out the advice of the two sages. A grand shrine of Sri Mangaladevi stood on the holy place. The two sages themseleves guided and supervised the execution of the work. The temple attained special significance as Mother Magaladevi granted special favours, especially on maidens. Pious maidens who worship the goddess observing Mangaladharavrata (Swayamvara Parvathi) will heave their wishes fulfilled. They get husbands most suited for them.
+                        
+                        Even today, heads of Kadri Yogirajmutt visit Mangaladevi temple on the first day of Kadri temple festival and offer prayer and silk cloth to the Goddess.</p>
+                    <h4>Festivals & Events</h4>
+                    <p>
+                        The Mangaladevi Temple celebrates several significant festivals: <br>
+                        1.Navaratri: This nine-night festival dedicated to the goddess Durga is marked by special rituals, prayers, and cultural events. Devotees participate in fasting, prayers, and vibrant celebrations. <br>
+
+                        2.Vijayadashami (Dussehra): Celebrated on the tenth day of Navaratri, Vijayadashami signifies the victory of good over evil. The temple holds special ceremonies and processions during this time. <br>
+                        
+                        3.Mangaladevi Festival: An annual festival dedicated to Goddess Mangaladevi, featuring elaborate rituals, processions, and cultural performances. It attracts a large number of devotees. <br>
+                        
+                        4.Deepavali: Known as the Festival of Lights, Deepavali is celebrated with lighting of lamps, fireworks, and festive decorations at the temple.</p>
+                    <h4>Location</h4>
+                    <p>The temple is situated in the heart of Mangalore, making it a prominent landmark in the city..</p> <div class="location">
+                    <a href="https://www.google.com/maps/place/Mangaladevi+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <section id="Kudupu" class="temple">
+                <h2>Shree Ananthapadmanabha Temple Kudupu</h2>
+                <img src="assets/temple/kudupu temple\th.jpeg" alt="Kudupu Temple">
+                <p>This temple is situated in Kudupu village, which is 10 Kms away from Mangalore City, in the Mangalore-Moodabidri route. This temple is dedicated to Lord Anantha Padmanabha (another form of Lord Vishnu) and famous for serpent worship. Annual festival Shashti is a famous religious ceremony falls in December. Also Nagarapanchami, a worship of sacrificing the milk to Lord Naga is celebrated with great devotion.</p>
+               
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/kudupu temple\Kudupu3.jpeg" alt="Kudupu Temple Image 1">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kudupu temple\kudupu2.jpeg" alt="Kudupu Temple Image 2">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kudupu temple\kudupu1.jpg" alt="Kudupu Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>Once there was a Brahmin Vedic scholar called 'Kedar' who was very orthodox, kind and religious follower. But he was extremely worried of not having a child. Thinking of that the blessing of Saint is ultimate resort for having a child he wandered everywhere searching one such saint. Finally his search fructified when he came contacted with one such holy Saint called 'Shringa Muni' near a small river 'Bhadra Saraswathi Thirtha' in midst of a big forest. He prostrated before a saint and placed his reason for worries. Hearing this a saint told him to stay there and start penance regarding Lord Subramanya who would fulfill your wishes. Saint also detailed him about the holiness of that place and the river. <br><br>
+
+                        Kedar accepted the advise of the saint and stood there and started a rigorous penance regarding Lord Subramanya with great concentration of mind and devotion. In penance he forgot all about his surroundings and himself. It continued for many years. As his penance became so intense it created a sort of immense heat in the surrounding and it spread everywhere even up to heaven. Devatas, humans, animals found it very hard to sustain. Everybody began to worry about the future if it continues like this. Worried about his penance Devatas went to Satyaloka to see Lord Brahma and told him the situation. Thinking of that Lord Mahavishnu only could redress the problem Lord Brahma accompanied by Devatas met him and detailed him with all about the situation. Hearing this Lord Mahavishnu said that Kedar is meditating regarding Lord Subramanya and only he could give remedy to this problem. Lord Mahavishnu promised Brahma and Devatas that he will meet Subramanya and accordingly he met him and told that Kedar is meditating upon him with a single desire of having a child that could be fulfilled by him only. He also asked Lord Subramanya to appear before Kedar and bless him with a child. But Lord Subramanya told that there is no child in the fate of Kedar and he is eligible only for salvation. But on the request of Lord Mahavishnu, Subramanya appeared before Kedar and blessed him with children. Kedar is so happy and expecting a child he settled near that Bhadra Thirtha River itself duly meditating and worshiping Lord Subramanya. <br><br>
+                        
+                        After some day wife of Kedar saw a serpent laying eggs and thought even snakes have good fortune of having children and worried too much about her fate comparing to that serpent. Year passed and Kedar's wife became pregnant and couple becomes very happy expecting a child. But after nine months, to their and everybody's surprise Kedar's wife delivered three eggs which was more looking like serpent eggs. Devatas thought these eggs are nothing but an incarnation of Lord Mahavishnu, Lord Mahashesha and Lord Subramanya and became very happy. <br><br>
+                        
+                        But Kedar was not happy. Even after rigorous penance if God blessed him with these eggs as children it is nothing but fate and a result of past action. That time he heard a divine voice coming from ether saying that these eggs are nothing but an incarnation of Lord Mahavishnu, Lord Mahashesha and Lord Subramanya for the sake of betterment of the world. It also realized him that he does not have further children and advised him to erect the eggs secretly at the place where he did penance upon Lord Subramanya. It blessed a place and River as a holy spot and whoever takes bath in the river will be blessed with children and freed from all sickness and sin. A divine voice also advised him to stay in that holy place worshiping Lord Anantha Padmanabha (another name of Lord Mahavishnu) and blessed him with salvation at the end of his life. <br><br>
+                        
+                        Hearing this voice Kedar became so happy and he kept those eggs in a basket weaved with forest creeps called Kudupu in local language and kept secretly in the place where he meditated upon Lord Subramanya. He spent his rest of life meditating upon Lord Anantha Padmanabha and attained salvation at the end of his life. Now in that place an anthill was grown and the place is well known as Shree Kshetra Kudupu. A small river called Bhadra Saraswathi Thirtha resides near the temple itself..</p>
+                    <h4>Festivals & Events</h4>
+                    <p>Following are some of the main festivals celebrated in the temple
+
+                        1.Subrahmanya Shashthi (ಸುಬ್ರಹ್ಮಣ್ಯ ಷಷ್ಠಿ) - In the month of November/December. Champa Shashthi. <br><br>
+                        2.Kiru Shashthi (ಕಿರು ಷಷ್ಠಿ) - In the month of December/January. 6th day of Pushya Shuddha. <br><br>
+                        3.Nagara Panchami (ನಾಗರ ಪಂಚಮಿ) - In the month of July/August. Shravana Shuddha Nagara Panchami. <br><br>
+                        4.Annual Festival (ವಾರ್ಷಿಕ ಜಾತ್ರೆ) - In the month of December/January. From Margashira Shuddha Padya to Margashira Shuddha Shashti. <br><br>
+                        5.Brahmakalashotsava (ಬ್ರಹ್ಮಕಲಶೋತ್ಸವ) - 18 February 2018 till 25 February 2018. <br><br>
+                        Temple Layout[8]</p>
+                    <h4>Location</h4>
+                    <p>Shree Ananthapadmanabha Temple is located in Kudupu, a suburb of Mangalore, Karnataka, India. The temple is situated approximately 15 kilometers from the city center of Mangalore, making it a significant religious site in the region.</p> 
+                    <div class="location">
+                    <a href="https://www.google.com/maps/place/Kudupu+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <!-- Shree Dharmasthala Temple Section -->
+            <section id="Dharmasthala" class="temple">
+                <h2>Dharmasthala Manjunatha Temple</h2>
+                <img src="assets/temple/dharmastala temple\DHARMASTALA1.jpeg" alt="Shree Dharmasthala Temple">
+                <p>The Dharmasthala Manjunatha Temple is one of the must visit temples of Mangalore. Lord Shiva is the main deity worshipped in this temple. This Shaivaite pilgrimage centre is located on the banks of River Nethravathi, in the temple town of Dharmasthala at a distance of 75 km from Mangalore. This 800 year old temple
+
+                    The Dharmasthala Manjunatha Temple is a large structure that also houses the idols of Dharma Daivas or angels of Lord Dharma. The annual festival of ‘Laksha Deepotsava’ is celebrated during the month of November or December every year in a grand manner.p>
+                
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/dharmastala temple\1dharmastal.jpeg" alt="Shree Dharmasthala Temple Image 1">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/dharmastala temple\Dharmastala.jpeg" alt="Shree Dharmasthala Temple Image 2">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/dharmastala temple\th (1).jpeg" alt="Shree Dharmasthala Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>800 years ago, Dharmasthala was known as Kuduma in Mallarmadi, then a village in Belthangady. Here lived the Jain chieftain Birmanna Pergade and his wife Ammu Ballalthi in a house called Nelliadi Beedu. According to the legend, the guardian angels of Dharma assumed human forms and arrived at Pergade's abode in search of a place where Dharma was being practised and could be continued and propagated. As was their habit, the couple hosted these illustrious visitors with all their wherewithal and great respect. Pleased by their sincerity and generosity, that night the Dharma Daivas appeared in the dreams of Pergade. They explained the purpose of their visit to him and instructed him to vacate his house for the worship of the Daivas and dedicate his life to the propagation of Dharma. Asking no questions, the Pergade built himself another house and began worshiping the Daivas at Nelliadi Beedu. <br>
+
+                        This worship of daivas continues. The Dharma Daivas again appeared before Pergade to build separate shrines to consecrate the four Daivas – Kalarahu, Kalarkayi, Kumaraswamy and Kanyakumari. Also, Pergade was instructed to choose two persons of noble birth to act as the Daivas' oracles and four worthy persons to assist Pergade in his duties as the executive head of the shrines. In return, the Daivas promised Pergade protection for his family, abundance of charity and renowned for the 'Kshetra'. Pergade, as desired, built the shrines and invited Brahmin priests to perform the rituals. These priests requested Pergade to install a Shivalinga beside the native Daivas. The Daivas then sent their vassal Annappa Swamy to procure the linga of Shiva from Kadri Manjunath Temple, near Mangalore. Subsequently, the Manjunatha temple was built around the linga..</p>
+                    <h4>Festivals & Events</h4>
+                    <p>1. Ganesha Chaturthi <br>
+                        2. Navarathri (Special pooja at Shri Ammanavaru Shrine followed by nine days of religious activities) <br>
+                        3. Deepavali <br>
+                        4. Laksha Deepotsava <br>
+                        5. Shivarathri (Annual Grand festival of lights, celebrated for last five days in the month of Kartika) <br>
+                        6. Chaandramana Ugadi (celebration of new year as per Calendar)br
+                        7. Annual Jathre (A nine day Festival conducted in April)</p>
+                    <h4>Location</h4>
+                    <p>Shree Dharmasthala is nestled in Dharmasthala village, Dakshina Kannada district, Karnataka, India, about 75 km east of Mangalore.</p>
+                    <div class="location">
+                    <a href="https://www.google.com/maps/place/Shree+Dharmasthala+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <!-- Kadri Manjunath Temple Section -->
+            <section id="kadri" class="temple">
+                <h2>Kadri Sri Manjunatha Temple</h2>
+                <img src="assets/temple/kadri temple\kadrimain.jpg" alt="Kadri Manjunath Temple" class="kadri">
+                <p>Kadri Manjunath temple also known as Kadri Manjunatha temple, dedicated to Lord Shiva in Mangalore, Karnataka, is one of the oldest Shiva temples. Hence, this historic temple is one of the must-visit temples in Kadri, Mangalore, for devotees of Lord Shiva. Let’s delve into the details of this ancient Shiva temple..</p>
+                
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/kadri temple\kadri.jpeg" alt="Kadri Manjunath Temple Image 1">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kadri temple\kadri3.webp" alt="Kadri Manjunath Temple Image 2">
+                           
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/kadri temple\kadri2.jpeg" alt="Kadri Manjunath Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>The temple of Manjunatheshwara on the hills of Kadri is said to be built[weasel words] during the 10th or 11th century. It was converted to a complete stone structure during the 14th century. <br>
+
+                        The bronze (panchlauha) idol of Lokeshwar (identified as Brahma), about 5 feet high, of the temple is called as oldest of the South Indian temples. It has an inscription dated 968 CE (or 1068 CE[2]), engraved on the pedestal. The inscription states that King Kundavarma of the Alupa Dynasty installed the Lokeshwara idol in Kadarika Vihara.[3] It mentions Mangalore as "Mangalapura". The image has three faces and six arms, and holds and hold flowers in two of the arms. The crown depicts a Dhyani Buddha. The image has an ornate prabhavali, and two attendants. It is very well preserved with enameled eyes. There exist two other undated bronze images of similar craftsmanship, one of them is identifiable as an Avalokiteshwar (called Narayana) and other as Buddha (called Vedavyasa).[4] Another stone inscription in Tulu, Kannada and Malayalam scripts of 12-13th century CE, in temple's kitchen, states that the ruler and the local landlords contributed land for the temple. A 1730 CE text Kadli Manjunath Mahatmyam gives an account of the association with Natha Mantha. <br>
+                        
+                        It is believed[weasel words] that Parashurama who was living in Sahyadri, killed the Kshathriyas who were cruel and donated the lands to Kashyapa. He prayed to Lord Shiva for a place to live. Lord Shiva assured Parashurama that if he performed a penance at Kadali Kshethra, Lord Shiva would reincarnate as Manjunatha for the betterment of the world. As per Shiva's orders Parashurama threw his axe into the sea and created a place for his penance. Yielding to Parashurama's prayers Lord Shiva appeared to him as Manjunatha with Goddess Parvathi and stayed at Kadri for the betterment of the world. As per the orders of Manjunatha the Sapthakoti Manthras become the seven Theerthas.[citation needed] <br>
+                        
+                        This temple has Hindu and Buddhist histories. Buddhism was practised here till the 10th century CE.[5] In spite of the decline of Buddhism elsewhere, devotion to the Buddhist figures of Manjusri and Avalokiteśvara continued in this region. The Nath cult was partly oriented towards Buddhism as well as the Tantric Shiva tradition. As a result, many Buddhist temples were taken over by Hindu traditions. According to M. Govinda Pai this temple was known as Kadri Manjunatha where is Manjunatha relates to Shiva and Kadri is derived from Kadri Vihara which was Buddhist monastery of the Vajrayana cult. <br>
+                        
+                        King Kundavarma of the Alupa dynasty left an inscription on the base of the Avalokiteśvara image stating he was devotee of Shiva. This image was not of Buddha, but of Bodhisattva, who was being worshiped as integrated form of Shiva. Further M. Govinda Pai has concluded this was center of Bodhisattva Manjusri's cult. And later on this Bodhisattavs were identified as Saivite deities.[6] Shiv linga and Bodhisattva were worshiped together for centuries at this place until it was converted completely to a Saivite temple. Kadarika Vihara provides firm inscriptional evidence for this transformation. <br>
+                        
+                        In front of the temple, at a height there are a number of water ponds. There's a garden surrounding the ponds. When one walks down from there in front of the temple is a huge lightpole. During karthika maasa, deepothsava is held here. There are statues of Machendranath, Gorakanath, Shringinath, Lokeshwara, Manjushri, and Buddha in the temple.</p>
+                        <h4>Festivals & events </h4>
+                    <p>Kadri Sri Manjunatha Temple celebrates several important festivals:
+
+                        1.Mahashivaratri: This major festival dedicated to Lord Shiva is celebrated with special poojas, offerings, and vigils throughout the night. Devotees participate in rituals to honor Lord Manjunatha. <br>
+                        
+                        2.Kadri Festival: An annual celebration held in honor of Lord Manjunatha, featuring elaborate rituals, processions, and cultural events. It draws a large number of devotees and visitors. <br>
+                        
+                        3.Deepavali: Known as the Festival of Lights, Deepavali is celebrated with lighting of lamps, fireworks, and festive decorations at the temple. <br>
+                        
+                        4.Navaratri: This nine-night festival dedicated to the goddess Durga includes special prayers, rituals, and cultural performances. <br>
+                        
+                        5.Vijayadashami (Dussehra): Celebrated on the tenth day of Navaratri, it signifies the victory of good over evil with special ceremonies and processions.</p>
+                    <p>Located in the southern part of Mangalore, Kadri Manjunath Temple is an important pilgrimage site.</p>
+                    <div class="location">
+                    <a href="https://www.google.com/maps/place/Kadri+Manjunath+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <!-- Shree karinjeshwara Temple Section -->
+            <section id="karinjeshwara" class="temple">
+                <h2>Sri Karinjeshwara Temple</h2>
+                <img src="assets/temple/karnja temple\Karinjeshwara.jpg" alt="Shree karinjeshwara Temple">
+                <p>Sri Karinjeshwara Temple (Kannada : ಕಾರಿಂಜೇಶ್ವರ Kārin̄jēśvara) is Hindu Temple, a famous Lord Shiva temple located Karinja in Bantwala Taluk, Kavalamudur Village, Dakshina Kannada, Karnataka, India. This temple is situated on the peak of Karinja Hill, about 1000 feet above sea level in Kodyamale hills, Karinjeshwara. <br><br>
+
+                    There are about 600 steps to reach this temple. This temple has two parts- one is lord Shiva is on the top of a cliff and the other is for the Goddess Parvati and Lord Ganesha in the middle of the way to the hill.[2] There are ponds named Gadha teertha at hill bottom, Ungusta theerta at hill middle.</p>
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/karnja temple\karinja3.jpg" alt="Shree karinjeshwara Temple Image 1">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/karnja temple\karinja2.jpeg" alt="Shree karinjeshwara Temple Image 2">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/karnja temple\karinja1.jpeg" alt="Shree karinjeshwara Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>The temple is partitioned into two halves. The Surya Sadashiva Temple is committed to God Shiva and his partner Goddess Parvati. An enthusiast will need to climb ( just by foot ) upwards of 555 stages with a specific end goal to achieve the Sri Karinjeshwara Temple. Arranged most of the way up the slope, this Parvathi temple is encompassed by a clean and well maintained verandah, toward one side of which is another, practically finished anna chathra - a feasting corridor. Another more extreme flight of steps paves the way to the peak of the slope on which is arranged the Karinjeshwara temple. The peak of the slope gives an amazing view of the forested foothills of the western ghats. A troop of agreeable monkeys have made their home here. The pioneer of the monkeys is called as Karinje Dhadda. Everyday after morning pooja, the naivedyam is customarily offered to the monkeys. The lake at base of the slope is known as "Gadha Theertha". As indicated by the priest, the Gadha Theertha was cut out when Bhima knelt down and tossed his mace (Gadha) down. The are other 3 lakes specifically Handi (Pig) Theertha, Ungushta (Toe) Theertha and Jaanu (Knee) Theertha . The last two lakes were shaped when Bhima knelt down to toss his mace, as indicated by the priest .p>
+                    <h4>Festivals & Events</h4>
+                    <p>Sri Karinjeshwara Temple, located in Karinja near Bantwal in Dakshina Kannada district, Karnataka, is dedicated to Lord Shiva. The temple celebrates several significant festivals that attract numerous devotees: <br>
+
+                        1.Mahashivaratri: This is one of the most important festivals at Sri Karinjeshwara Temple. Devotees observe fasting and participate in night-long vigils, special poojas, and rituals dedicated to Lord Shiva. <br>
+                        
+                        2.Karthika Deepotsava: Celebrated during the month of Karthika, this festival involves lighting numerous lamps around the temple premises, creating a spectacular and spiritual ambiance. Special poojas and rituals are performed in honor of Lord Shiva. <br>
+                        
+                        3.Rathotsava (Car Festival): The annual chariot festival is a grand event where the temple's deity is taken out in a beautifully decorated chariot. The procession is accompanied by music, dance, and various cultural performances, drawing large crowds of devotees. <br>
+                        
+                        3.Navaratri: The nine-night festival dedicated to the goddess Durga includes special rituals, prayers, and cultural events. The temple is beautifully decorated, and devotees participate in the festivities with great enthusiasm. <br>
+                        
+                        4.Shivaratri: Apart from Mahashivaratri, regular Shivaratri observances occur every month, with devotees participating in special rituals and prayers.
+                       </p>
+                    <h4>Location</h4>
+                    <p>This temple is situated on the peak of Karinja Hill, about 1000 feet above sea level in Kodyamale hills, Karinjeshwara.</p>
+                <div class="location">
+                    <a href="https://www.google.com/maps/place/Shree+karinjeshwara+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+            <!-- Shree Sharavu Mahaganapathi Temple Section -->
+            <section id="sharavu" class="temple">
+                <h2>Shree Sharavu Mahaganapathi Temple</h2>
+                <img src="assets/temple/sharavu temple\sharavu.jpg" alt="Shree Sharavu Mahaganapathi Temple">
+                <p>
+                    Shree Sharavu Mahaganapathi Temple, located in the heart of Mangalore, Karnataka, is a revered Hindu temple dedicated to Lord Ganesha, also known as Mahaganapathi. The temple, with its historical origins spanning several centuries, is renowned for its traditional Hindu architecture, including intricate carvings and a grand entrance. The main deity, Lord Ganesha, is worshipped here as the remover of obstacles and the deity of wisdom and prosperity. The temple is a focal point for significant festivals such as Ganesh Chaturthi, which features elaborate poojas and processions. Shree Sharavu Mahaganapathi Temple continues to be an important spiritual and cultural landmark in Mangalore, attracting numerous devotees and visitors.</p>
+                
+                <div class="gallery">
+                    <h3>Gallery</h3>
+                    <div class="gallery-grid">
+                        <div class="gallery-item">
+                            <img src="assets/temple/sharavu temple\th.jpeg" alt="Shree Sharavu Mahaganapathi Temple Image 1">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/sharavu temple\mahaganapathi-temple.jpg" alt="Shree Sharavu Mahaganapathi Temple Image 2">
+                            
+                        </div>
+                        <div class="gallery-item">
+                            <img src="assets/temple/sharavu temple\00603350eed26b2a63ea0808f376ef05.jpg" alt="Shree Sharavu Mahaganapathi Temple Image 3">
+                            
+                        </div>
+                    </div>
+                </div>
+                <button class="read-more-btn">Read More</button>
+                <div class="more-info">
+                    <h4>History</h4>
+                    <p>According to legends, the Shri Sharavu Maha Ganapathi temple was built by Tulu king, Maharaja Veerabahu to pay for the sin he caused when he mistakenly killed a cow instead of killing a tiger that was just standing by side of the cow. The king was unaware of the harmonious life of animals in the jungle and believed that the tiger would kill the sacred cow and in an attempt to save the cow he shot an arrow that hit the cow instead of the tiger. To pay for the error, he was instructed to install a Shivalinga and a sanctum sanctorum around and worship the Lingam every day of his life. <br>
+
+                        The images of Siddhilakshmi and Dashabhuja Maha Ganapati also reportedly appeared on the south wall of the temple after a few years. Since then, Maha Ganapati is also worshiped in the temple which has become the Shri Sharavu Mahaganapathi temple.</p>
+                    <h4>Festivals & Events</h4>
+                    <p>
+                        Shree Sharavu Mahaganapathi Temple in Mangalore celebrates several important festivals throughout the year, attracting numerous devotees and visitors. Here are some of the major festivals: <br>
+                        
+                        1.Ganesh Chaturthi: This is the most significant festival at the temple, celebrating the birth of Lord Ganesha. The festivities include elaborate decorations, special poojas, cultural programs, and processions. Devotees from all over come to seek the blessings of Lord Ganesha during this time. <br>
+                        
+                        2.Sankashti Chaturthi: Celebrated every month, this day is dedicated to Lord Ganesha. Devotees observe fasts and perform special poojas and rituals in the evening. <br>
+                        
+                        3.Deepavali (Diwali): Known as the Festival of Lights, Deepavali is celebrated with the lighting of lamps, special poojas, and festive decorations. The temple premises are adorned with lights, and devotees participate in various rituals. <br>
+                        
+                        4.Navaratri: This nine-night festival dedicated to Goddess Durga includes special prayers, rituals, and cultural performances. The temple is beautifully decorated, and the celebrations culminate with Vijayadashami. <br>
+                        
+                        5.Mahashivaratri: Although primarily dedicated to Lord Shiva, Mahashivaratri is also observed at the temple with special prayers and rituals.</p>
+                    <h4>Location</h4>
+                    <p>Located in the heart of Mangalore, Shri Sharavu Mahaganapathi Temple is located in Hampankatta, Mangalore, Karnataka.</p>
+                    <div class="location">
+                    <a href="https://www.google.com/maps/place/Shree+Sharavu+Mahaganapathi+Temple" target="_blank">
+                        <i class="fas fa-map-marker-alt"></i> View on Google Maps
+                    </a>
+                </div>
+                    <button class="read-less-btn">Read Less</button>
+                </div>
+            </section>
+
+        </section>
+    </main>
+    <footer id="contact">
+        <div class="footer-container">
+            <div class="contact-info">
+                <h3>Contact Info</h3>
+                <p><strong>Phone:</strong> 9380634950</p>
+                <p><strong>Email:</strong> mohanpoojari658@gmail.com</p>
+                <div class="social-media">
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Contact Form</h3>
+                <form>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" rows="4" required></textarea>
+
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const readMoreButtons = document.querySelectorAll('.read-more-btn');
+    const readLessButtons = document.querySelectorAll('.read-less-btn');
+
+    readMoreButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const templeSection = button.closest('.temple');
+            templeSection.classList.add('expanded');
+        });
+    });
+
+    readLessButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const templeSection = button.closest('.temple');
+            templeSection.classList.remove('expanded');
+        });
+    });
+});
+    </script>
+</body>
+</html>
